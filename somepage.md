@@ -1,3 +1,1 @@
-layout: page
-title: "somepage"
-permalink: /somepages/
+Hello1!!!
