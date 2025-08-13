@@ -167,4 +167,4 @@ neofetch
 ```
 and tadam!!!
 
-<img width="930" height="340" alt="image" src="https://github.com/user-attachments/assets/e3b0b4b6-ddd5-46fd-b010-e141f2c5d9a4" />
+<img alt="neofetch" src="https://github.com/energyc0/energyc0.github.io/blob/main/_assets/neofetch1.png" />
