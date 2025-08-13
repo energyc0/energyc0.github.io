@@ -6,10 +6,22 @@ title: "Choosing repositories for package manager(apt) on Debian"
 
 # From what I started
 I installed a second Linux system(Debian) on my computer in a strange way. I downloaded .ISO file from the Internet and created a new partition on my disk. I tryed to manually download it on my partition with **dd** command.
-It worked and I could select my new Debian system in BIOS but the problem was that the system installer searched for boot files in removable media. That strange issue I actually solved by copying .ISO file to my USB.
-I chose Debian in BIOS, plugged in the USB and started installation.
+It didn't work because I made the partition on HDD, but Ubuntu is installed on SDD. GRUB didn't want to notice my new system so I manually added it in the ``/etc/grub.d/40_custom``:
+```
+menuentry Debian (disk1) {
+        insmod ext4
+        set root='(hd0,4)'
+        linux /install.amd/vmlinuz
+        initrd /install.amd/initrd.gz
+}
+```
+
+It worked and I could select my new Debian system in grub. I started the installation but the problem was that the system installer searched for boot files in removable media. That strange issue I actually solved by copying .ISO file to my USB.
+I chose Debian in grub, plugged in the USB and started installation.
 
 I had to wait a lot of time and it seemed that the installation had stucked. So I decided to do something stupid and turned off my computer. After booting again I started Debian and it looked good, but it wasn't. 
+
+**Very stupid installation.**
 
 I tried to install needed packages but **sudo** wasn't working.
 
@@ -29,28 +41,46 @@ deb file:/media/cdrom/ stable main
 I booted from my Ubuntu and mounted Debian on ```/media/debian```. I had to use ```chroot```. This command creates a new shell environment with chosen ```/``` directory. Thanks to this command we can execute other commands from chosen root directory.
 
 For example, I created a new directories and mounted system directories there:\
-```sudo mkdir /new_env```\
-```cd /new_env```\
-```sudo mkdir dev bin lib lib64```\
-```sudo mount --bind /lib ./lib```\
-```sudo mount --bind /lib64 ./lib64```\
-```sudo mount --bind /bin./bin```\
-```sudo mount --bind /dev ./dev```\
-and executed from ```sudo chroot /new_env/ ls```\
+```
+sudo mkdir /new_env
+cd /new_env
+sudo mkdir dev bin lib lib64
+sudo mount --bind /lib ./lib
+sudo mount --bind /lib64 ./lib64
+sudo mount --bind /bin./bin
+sudo mount --bind /dev ./dev
+```
+and executed 
+```
+sudo chroot /new_env/ ls
+```
 and its output was something like this:
+```
+bin  dev  lib  lib64
+```
 
-```bin  dev  lib  lib64```
+Also we can use an option ```--userspec=USER:GROUP``` to choose user and group. For example,
+```
+sudo chroot /media/debian whoami
+```
+outputs ```root```,\
+while 
+```
+sudo chroot --userspec=energyc0 /media/debian whoami
+```
+outputs ```energyc0```.
 
-Also we can use an option ```--userspec=USER:GROUP``` to choose user and group. For example, \
-```sudo chroot /media/debian whoami``` outputs ```root```,\
-while ```sudo chroot --userspec=energyc0 /media/debian whoami``` outputs ```energyc0```.
-
-Back to my problem, I executed ```sudo chroot /media/debian``` 
+Back to my problem, I executed
+```
+sudo chroot /media/debian
+``` 
 and this command just helped me to google answers to my question during solving problems on Debian :)
 
 # A little about "mount" 
-Also I understood two crucial options in ``mount`` - ``--bind`` and ``--rbind``. These options remount parts of the hierarchy somewhere else. So when I typed:\
-```sudo mount --bind /dev /home/my_dir/dev```\
+Also I understood two crucial options in ``mount`` - ``--bind`` and ``--rbind``. These options remount parts of the hierarchy somewhere else. So when I typed:
+```
+sudo mount --bind /dev /home/my_dir/dev
+```
 I could access ``/dev`` directory from two places: from ``/dev`` and from ``/home/my_dir/dev``. 
 
 According to the docs: 
@@ -70,8 +100,71 @@ According to the docs:
        been attached by a "bind" operation. The olddir and newdir are independent and the olddir may be unmounted.
 And if you want to mount all submounts you need to use ``--rbind``.
 
-If I didn't mount ``/dev`` directory to my Debian root directory I got a error
+If I didn't mount ``/dev`` directory to my Debian root directory I got a error using ``sudo``:
+```
+sudo: unable to allocate pty: No such device
+```
+Check https://en.m.wikipedia.org/wiki/Pseudoterminal.
+
+ # Problem with "umount"
+ When I tried to unmount ``/dev`` from ``/media/debian`` directory I got a error: 
+```
+umount: /mnt/data: target is busy.
+```
+
+Then I used ```umount -l``` this option is **lazy unmounting**. It means that filesystem will be unmounted but all the file descriptors processes are working with won't be destroyed. So operating system deallocates it when file descriptors are closed. Linux kernel marks filesystem as **lazily unmounted** in ``struct mount``. But I must say that this is jeopardy to use this option for system files like ``/``, ``/var`` or ``/usr`` or for processes that have been working a long time with files (data bases, for example). So all the processes that are already working with files will continue their work, but all the processes that want to start working with these files cannot do that.
 
 # Solving apt-manager problem
 I found in the Internet(https://deb.debian.org/) debian repositories, write them down in the ``sources.list`` and run ``apt update``. That is the way I fixed my apt repositories. Then I downloaded ``sudo`` packages. But there was a problem - speed.
-I needed to select optimal repository for downloading packages. I downloaded ``netselect-apt`` package and just run ``
+I needed to select optimal repository for downloading packages. I downloaded ``netselect-apt`` package and just run ``netselect-apt`` and my ``sources.list`` started to look like this:
+```
+# Debian packages for stable
+deb http://debian-mirror.behostings.net/debian/ stable main contrib
+# Uncomment the deb-src line if you want 'apt-get source'
+# to work with most packages.
+# deb-src http://debian-mirror.behostings.net/debian/ stable main contrib
+
+# Security updates for stable
+deb http://security.debian.org/ stable-security main contrib
+```
+It just automatically selected 'convenient' repositories.
+
+I wanted to play with my system and tried to install ``neofetch``, but I couldn't: ``E: Unable to locate package neofetch``.
+
+So I needed to figure out about remote repositories.
+
+Types of official repositories:
++ **Stable** - there is the most stable and reliable software, but not the newest. This type of repositories pass many tests and come up from **testing** repositories.
++ **Testing** - there is software that is being developed and tested. Software here comes up from **unstable** repositories.
++ **Unstable (sid)** - there is the newest software. If in **testing** software has already passed a lot of tests, but in **unstable** these tests only start.
++ **Oldstable** - it is the previous **stable** repository.
++ **Experimental** - in this repository packages and utilities are being developed. This is for developers.
++ **Backports** - it is something in the middle of **stable** and **testing**. Packages here are a bit of **unstable** and **testing** and are downloaded without the newest libraries. It is made for compatibility with stable (in case if you want to use the newest software and get back to stable).
+
+Branches of repositories:
++ **main** - this branch is included in every ditro. It follows the principles of free software. It doesn't depend on repositories that are not in 'main'.
++ **contrib** - this branch follows the principles of free software. It depends on the software that may have an owner. For example, Java from Oracle.
++ **non-free** - this branch doesn't follow the principles of free software.
+
+And there are nicknames for Debian releases:
++ Debian 7 ― Wheezy
++ Debian 8 ― Jessie
++ Debian 9 ― Stretch
++ Debian 10 ― Buster
++ Debian 11 ― Bullseye
+
+You can check docs - https://www.debianadmin.com/manpages/sourcelistmanpage.txt.
+
+So I found out that ``neofetch`` was not in *stable* repository, but in *oldstable*, so I added in ``sources.list``:
+```
+deb http://debian-mirror.behostings.net/debian/ oldstable main contrib
+```
+entered
+```
+apt update
+apt install neofetch
+neofetch
+```
+and tadam!!!
+
+<img width="930" height="340" alt="image" src="https://github.com/user-attachments/assets/e3b0b4b6-ddd5-46fd-b010-e141f2c5d9a4" />
