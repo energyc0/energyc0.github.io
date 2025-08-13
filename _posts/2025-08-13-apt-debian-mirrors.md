@@ -131,9 +131,9 @@ It just automatically selected 'convenient' repositories.
 
 I wanted to play with my system and tried to install ``neofetch``, but I couldn't: ``E: Unable to locate package neofetch``.
 
-So I needed to figure out about remote repositories.
+So I needed to figure out about remote repositories. ``deb`` type in ``sources.list`` describes distribution/component archive.
 
-Types of official repositories:
+Types of distributions:
 + **Stable** - there is the most stable and reliable software, but not the newest. This type of repositories pass many tests and come up from **testing** repositories.
 + **Testing** - there is software that is being developed and tested. Software here comes up from **unstable** repositories.
 + **Unstable (sid)** - there is the newest software. If in **testing** software has already passed a lot of tests, but in **unstable** these tests only start.
@@ -141,7 +141,7 @@ Types of official repositories:
 + **Experimental** - in this repository packages and utilities are being developed. This is for developers.
 + **Backports** - it is something in the middle of **stable** and **testing**. Packages here are a bit of **unstable** and **testing** and are downloaded without the newest libraries. It is made for compatibility with stable (in case if you want to use the newest software and get back to stable).
 
-Branches of repositories:
+Types of component:
 + **main** - this branch is included in every ditro. It follows the principles of free software. It doesn't depend on repositories that are not in 'main'.
 + **contrib** - this branch follows the principles of free software. It depends on the software that may have an owner. For example, Java from Oracle.
 + **non-free** - this branch doesn't follow the principles of free software.
@@ -153,7 +153,7 @@ And there are nicknames for Debian releases:
 + Debian 10 ― Buster
 + Debian 11 ― Bullseye
 
-You can check docs - https://www.debianadmin.com/manpages/sourcelistmanpage.txt.
+You can check docs - <https://www.debianadmin.com/manpages/sourcelistmanpage.txt>.
 
 So I found out that ``neofetch`` was not in *stable* repository, but in *oldstable*, so I added in ``sources.list``:
 ```
