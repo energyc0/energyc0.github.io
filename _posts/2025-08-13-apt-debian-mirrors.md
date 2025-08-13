@@ -2,6 +2,7 @@
 layout: post
 author: energyc0
 title: "Choosing repositories for package manager(apt) on Debian"
+permalink: /apt-debian-packages/
 ---
 
 # From what I started
@@ -174,4 +175,11 @@ neofetch
 ```
 and tadam!!!
 
-<img alt="neofetch" src="https://github.com/energyc0/energyc0.github.io/blob/main/_assets/neofetch1.png" />
+<img alt="neofetch" src="https://github.com/energyc0/energyc0.github.io/blob/main/_assets/neofetch1.png">
+
+# About package managers
+There are several package managers on Debian: **dpkg**, **apt-get**,**apt**, **synaptic**, **aptitude** and more.
++ **dpkg** - it is a low level utility that works with **.deb** packages. Cannot solve dependencies and work with repositories.
++ **apt-get** - it is a high level utility for managing packages based on **dpkg**. It can resolve dependencies and work with repositories.
++ **apt** - it is a high level utility for managing packages. It is upgraded **apt-get** that combines **apt-get**, **apt-cache** and etc., but doesn't have all the **apt-\*** commands.
++ **synaptic** and **aptitude** - are high level package managers with graphical interface.
