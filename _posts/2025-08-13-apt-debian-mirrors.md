@@ -175,7 +175,7 @@ neofetch
 ```
 and tadam!!!
 
-<img alt="neofetch" src="/_assets/neofetch1.png">
+![Neofetch](/assets/neofetch1.png)
 
 # About package managers
 There are several package managers on Debian: **dpkg**, **apt-get**,**apt**, **synaptic**, **aptitude** and more.
