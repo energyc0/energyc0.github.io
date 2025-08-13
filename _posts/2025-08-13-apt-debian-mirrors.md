@@ -175,7 +175,7 @@ neofetch
 ```
 and tadam!!!
 
-<img alt="neofetch" src="https://github.com/energyc0/energyc0.github.io/blob/main/_assets/neofetch1.png">
+<img alt="neofetch" src="/_assets/neofetch1.png">
 
 # About package managers
 There are several package managers on Debian: **dpkg**, **apt-get**,**apt**, **synaptic**, **aptitude** and more.
