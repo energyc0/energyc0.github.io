@@ -104,7 +104,7 @@ If I didn't mount ``/dev`` directory to my Debian root directory I got a error u
 ```
 sudo: unable to allocate pty: No such device
 ```
-Check https://en.m.wikipedia.org/wiki/Pseudoterminal.
+Check <https://en.m.wikipedia.org/wiki/Pseudoterminal>.
 
  # Problem with "umount"
  When I tried to unmount ``/dev`` from ``/media/debian`` directory I got a error: 
@@ -115,7 +115,7 @@ umount: /mnt/data: target is busy.
 Then I used ```umount -l``` this option is **lazy unmounting**. It means that filesystem will be unmounted but all the file descriptors processes are working with won't be destroyed. So operating system deallocates it when file descriptors are closed. Linux kernel marks filesystem as **lazily unmounted** in ``struct mount``. But I must say that this is jeopardy to use this option for system files like ``/``, ``/var`` or ``/usr`` or for processes that have been working a long time with files (data bases, for example). So all the processes that are already working with files will continue their work, but all the processes that want to start working with these files cannot do that.
 
 # Solving apt-manager problem
-I found in the Internet(https://deb.debian.org/) debian repositories, write them down in the ``sources.list`` and run ``apt update``. That is the way I fixed my apt repositories. Then I downloaded ``sudo`` packages. But there was a problem - speed.
+I found in the Internet(<https://deb.debian.org/>) debian repositories, write them down in the ``sources.list`` and run ``apt update``. That is the way I fixed my apt repositories. Then I downloaded ``sudo`` packages. But there was a problem - speed.
 I needed to select optimal repository for downloading packages. I downloaded ``netselect-apt`` package and just run ``netselect-apt`` and my ``sources.list`` started to look like this:
 ```
 # Debian packages for stable
