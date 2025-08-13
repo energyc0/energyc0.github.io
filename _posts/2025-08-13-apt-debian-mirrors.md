@@ -5,7 +5,7 @@ title: "Choosing repositories for package manager(apt) on Debian"
 ---
 
 # From what I started
-I installed a second Linux system(Debian) on my computer in a strange way. I downloaded .ISO file from the Internet and created a new partition on my disk. I tryed to manually download it on my partition with **dd** command.
+I installed a second Linux system(Debian) on my computer in a strange way. I downloaded .ISO file from the Internet and created a new partition on my disk. I tried to manually download it on my partition with **dd** command.
 It didn't work because I made the partition on HDD, but Ubuntu is installed on SDD. GRUB didn't want to notice my new system so I manually added it in the ``/etc/grub.d/40_custom``:
 ```
 menuentry Debian (disk1) {
@@ -40,7 +40,7 @@ deb file:/media/cdrom/ stable main
 
 I booted from my Ubuntu and mounted Debian on ```/media/debian```. I had to use ```chroot```. This command creates a new shell environment with chosen ```/``` directory. Thanks to this command we can execute other commands from chosen root directory.
 
-For example, I created a new directories and mounted system directories there:\
+For example, I created a new directories and mounted system directories there:
 ```
 sudo mkdir /new_env
 cd /new_env
@@ -63,12 +63,18 @@ Also we can use an option ```--userspec=USER:GROUP``` to choose user and group. 
 ```
 sudo chroot /media/debian whoami
 ```
-outputs ```root```,\
+outputs 
+```
+root
+```
 while 
 ```
 sudo chroot --userspec=energyc0 /media/debian whoami
 ```
-outputs ```energyc0```.
+outputs 
+```
+energyc0
+```
 
 Back to my problem, I executed
 ```
@@ -107,6 +113,7 @@ sudo: unable to allocate pty: No such device
 Check <https://en.m.wikipedia.org/wiki/Pseudoterminal>.
 
  # Problem with "umount"
+ 
  When I tried to unmount ``/dev`` from ``/media/debian`` directory I got a error: 
 ```
 umount: /mnt/data: target is busy.
@@ -139,10 +146,10 @@ Types of distributions:
 + **Unstable (sid)** - there is the newest software. If in **testing** software has already passed a lot of tests, but in **unstable** these tests only start.
 + **Oldstable** - it is the previous **stable** repository.
 + **Experimental** - in this repository packages and utilities are being developed. This is for developers.
-+ **Backports** - it is something in the middle of **stable** and **testing**. Packages here are a bit of **unstable** and **testing** and are downloaded without the newest libraries. It is made for compatibility with stable (in case if you want to use the newest software and get back to stable).
++ **Backports** - it is something in the middle of **stable** and **testing**. Packages here are a bit of **unstable** and a bit of **testing** and are downloaded without the newest libraries. It is made for compatibility with stable (in case if you want to use the newest software and get back to stable).
 
 Types of component:
-+ **main** - this branch is included in every ditro. It follows the principles of free software. It doesn't depend on repositories that are not in 'main'.
++ **main** - this branch is included in every distro. It follows the principles of free software. It doesn't depend on repositories that are not in 'main'.
 + **contrib** - this branch follows the principles of free software. It depends on the software that may have an owner. For example, Java from Oracle.
 + **non-free** - this branch doesn't follow the principles of free software.
 
