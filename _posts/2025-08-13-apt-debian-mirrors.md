@@ -5,6 +5,12 @@ title: "Choosing repositories for package manager(apt) on Debian"
 permalink: /apt-debian-packages/
 ---
 
+# What this post is about
++ ``apt`` manager and other other package managers
++ ``sudo`` and ``su``
++ ``chroot``
++ ``mount``
+
 # From what I started
 I installed a second Linux system(Debian) on my computer in a strange way. I downloaded .ISO file from the Internet and created a new partition on my disk. I tried to manually download it on my partition with **dd** command.
 It didn't work because I made the partition on HDD, but Ubuntu is installed on SDD. GRUB didn't want to notice my new system so I manually added it in the ``/etc/grub.d/40_custom``:

@@ -5,6 +5,13 @@ permalink: /cs-tour/
 author: energyc0
 ---
 
+# What this post is about
++ Compilation process
++ Executables, object files
++ Processes and threads
++ Memory caching
++ SIMD
+
 # Preface
 This post is written based on the book "Computer Systems: A Programmer's Perspective, 3/E" by Randal E. Bryant and David R. O'Hallaron, Carnegie Mellon University
 
