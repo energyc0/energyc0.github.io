@@ -6,16 +6,6 @@
 + Разные инстансы стартуются для каждого пользователя, который вошёл в систему
 + когда запускается от имени системы то использует файл system.conf и файлы в system.conf.d директориях
 
-
-# debian
-1. Загрузил систему, были проблемы с чёрным экраном (nomodeset, splash)
-2. Дальше я создал logical volumes и смонтировал рут раздел, скопировал его туда
-3. Перенёс все файлы, создал граб конфиги и пересоздал **initrd** (dracut) - https://casp.ru/?p=55
-4. Оказалось, что я не смонтировал /boot и все записи были на /dev/vg1/lv_root, потом всё заработало
-5. Потом я удалил старый раздел и всё сломалось - https://unix.stackexchange.com/questions/329926/grub-starts-in-command-line-after-reboot. я понял, что надо было обновить /boot/efi, потом с помощью баш граба я зашёл обратно и всё починил
-
-+ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" и GRUB_CMDLINE_LINUX=""
-
 # TODO 
 + systemd
 + initrd
