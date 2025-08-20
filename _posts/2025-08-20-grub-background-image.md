@@ -2,7 +2,7 @@
 title: "Setting up grub background image"
 author: energyc0
 permalink: /grub-background-image/
-layout: pos
+layout: post
 ---
 
 # What this post is about
