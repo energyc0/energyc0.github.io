@@ -10,3 +10,9 @@
 + systemd
 + initrd
 + udisksctl
+
+ 
+# Linux system programming
++ файловые дыры
++ open, read, write, lseek, ioctl
++ маски
