@@ -1,3 +1,10 @@
+---
+author: energyc0
+title: "temporary"
+published: false
+layout: post
+---
+
 # systemd
 
 + системд запускается как пид 1 и инициализирует систему на старте, может параллельно запускать несколько служб одновременно
@@ -10,9 +17,3 @@
 + systemd
 + initrd
 + udisksctl
-
- 
-# Linux system programming
-+ файловые дыры
-+ open, read, write, lseek, ioctl
-+ маски
