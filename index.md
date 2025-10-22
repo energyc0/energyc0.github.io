@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Hello"
+---
+
 <ul> 
   {% for post in site.posts %}
     <li>
