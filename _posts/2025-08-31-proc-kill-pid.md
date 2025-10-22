@@ -1,7 +1,7 @@
 ---
 title: "0 and 1 processes in Linux"
 author: "energyc0"
-layout: post
+layout: default
 permalink: /0-1-processes/
 ---
 

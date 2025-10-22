@@ -1,7 +1,7 @@
 ---
 author: energyc0
 title: "File IO syscalls in Linux"
-layout: post
+layout: default
 permalink: /io-syscall-linux/
 ---
 ## Basics

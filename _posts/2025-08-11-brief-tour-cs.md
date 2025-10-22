@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: A brief tour of computer systems
 permalink: /cs-tour/
 author: energyc0

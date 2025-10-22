@@ -1,7 +1,7 @@
 ---
 author: energyc0
 title: "Braces in bash"
-layout: post
+layout: default
 permalink: /braces-bash/
 ---
 

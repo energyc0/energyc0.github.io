@@ -1,7 +1,7 @@
 ---
 author: energyc0
 title: "Commands to check Linux logs"
-layout: post
+layout: default
 permalink: /log-view-cmd/
 ---
 # How to check logs in Linux

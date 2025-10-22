@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 author: energyc0
 permalink: /root-on-lvm/
 title: "How to install root directory on logical volume"

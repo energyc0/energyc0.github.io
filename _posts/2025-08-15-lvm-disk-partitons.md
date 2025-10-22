@@ -1,7 +1,7 @@
 ---
 author: energyc0
 title: "LVM and disk partitions"
-layout: post
+layout: default
 permalink: /lvm-disk-partitions/
 ---
 
