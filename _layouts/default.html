@@ -3,25 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }} - Мой сайт</title>
     
+    <!-- MathJax Configuration -->
     <script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true
+                processEscapes: true,
+                tags: 'ams'
             },
             svg: {
                 fontCache: 'global'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
             }
         };
     </script>
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
+
+    <!-- Стили -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        
+        header {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .content {
+            font-size: 16px;
+        }
+        
+        .math {
+            overflow-x: auto;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+            color: #6c757d;
+        }
+        
+        /* Стили для кода */
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Навигация */
+        .nav {
+            margin-bottom: 2rem;
+        }
+        
+        .nav a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    {{ content }}
+    <div class="container">
+        <header>
+            <div class="nav">
+                <a href="/">Главная</a>
+                <a href="/about">О сайте</a>
+            </div>
+            <h1>{{ page.title }}</h1>
+            {% if page.date %}
+            <div class="date">{{ page.date | date: "%d.%m.%Y" }}</div>
+            {% endif %}
+        </header>
+        
+        <main class="content">
+            {{ content }}
+        </main>
+        
+        <footer>
+            <p>&copy; {{ site.time | date: '%Y' }} Мой сайт. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <!-- Скрипт для автоматического обновления MathJax после загрузки контента -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        });
+    </script>
 </body>
 </html>
