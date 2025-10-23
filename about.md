@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "About energyc0"
+title: "About"
 author: energyc0
 permalink: "/about"
 ---
