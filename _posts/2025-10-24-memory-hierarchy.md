@@ -43,7 +43,26 @@ CPU Registers, CPU Caches and RAM represent **Primary storage**. Primary storage
         - **Electrically alterable read-only memory (EAROM)** is a type of EEPROM that can be *modified* one or a few bits at a time. EAROM may be used as non-volatile storage for critical system setup information; in many applications, EAROM has been supplanted by CMOS RAM supplied by mains power and backed up with a lithium battery. 
         - **Flash memory** is a modern type of EEPROM invented in 1984. For flash memory you need to *erase* the area where you are willing to write.
     5. **NVRAM (Non-volatile Random-Access Memory)** is random-access memory that retains data without applied power. There are a few types of NVRAM. The first type of NVRAM is static RAM with a built-in battery (most often lithium) and enhanced protection against information distortion at the time of power on and off. The second is differs from the first that its memory can be replaced into EEPROM when machine is shutting down and from EEPROM memory can be replaced into NVRAM when machine is turning on.
+#### Secondary storage
 
-- **Secondary storages** are **hard disk drives (HDD)** and **solid-state drives (SSD)**. Secondary storage differs from main memory
+**Secondary storage (also known as auxilliary storage or external memory)** is not directly used by the CPU, but accessed via replacing data to a primary storage with input/output calls (for example asking BIOS to read/write to a sector on a disk). Secondary storage is non-volatile that means it retains data even after shut off. This type of memory is less expensive, can contain more data, but slower than primary storage. Secondary storage is addressable by block and often formatted according to a filesystem format that provides abstraction layer to organize data into files and directories.
+
+In modern computers, **hard disk drives (HDDs)** and **solid-state drives (SSDs)** are usually used as secondary storage. Other examples are *USB flash drives*, *floppy disks*, *magnetic tapes*, *paper tapes*, *punched cards* and *RAM disks*.
+
+- **Hard disk drive (HDD)** is an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage with one or more rigid rapidly rotating platters coated with magnetic material. 
+
+![HDD image](/assets/hdd-image.jpeg)
+
+- **Solid-state drive (SSD)** is a type of solid-state storage device that uses integrated circuits to store data persistently. It is sometimes called *semiconductor storage* device, *solid-state* device, or *solid-state disk*. SSDs rely on *flash NAND* memory to store data. Unlike HDDs they have no moving parts that allow them to access data faster; it reduces latency, power consumption and makes them more silent. However SSDs are more expensive and have less write cycles than hard disk drives.
+
+![SSD image](/assets/ssd-image.jpg)
+
+- **USB flash drive (UFD)** is a data storage device that includes flash memory with an integrated USB interface. Some allow up to 100,000 write/erase cycles, depending on the exact type of memory chip used, and are thought to physically last between 10 and 100 years under normal circumstances.
+
+![USB image](/assets/usb-image.jpg)
+
+- **
+
+![Floppy disk image](/assets/floppy-disk-image.jpg)
 
 ![Computer memory hierarchy](/assets/computer_memory_hierarchy.png)
