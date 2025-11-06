@@ -61,8 +61,17 @@ In modern computers, **hard disk drives (HDDs)** and **solid-state drives (SSDs)
 
 ![USB image](/assets/usb-image.jpg)
 
-- **
+- **Floppy disks or diskettes** were in common in 20th-century and were superseded by USB flash drives, memory cards, optical disks and other cloud storages. Floppy disk is a type of storage made from a thin disk coated with magnetic storage medium. It is wrapped in a plastic shell lined with fabric to help to remove dust from the spinning disk.
 
 ![Floppy disk image](/assets/floppy-disk-image.jpg)
+
+- A **memory card** is an electronic data storage device used for storing digital data, typically using flash memory. It is commonly used in digital devices, such as digital cameras or game consoles. They allow to add more memory for such devices using memory card instead of protruding USB flash drives.
+
+![Memory card image](/assets/memory-card-image.jpg)
+
+- **Magnetic tapes**
+- **paper tapes**
+- **punched cards**
+- **RAM disks**
 
 ![Computer memory hierarchy](/assets/computer_memory_hierarchy.png)
