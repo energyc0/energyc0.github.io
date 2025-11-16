@@ -69,9 +69,33 @@ In modern computers, **hard disk drives (HDDs)** and **solid-state drives (SSDs)
 
 ![Memory card image](/assets/memory-card-image.jpg)
 
-- **Magnetic tapes**
-- **paper tapes**
-- **punched cards**
-- **RAM disks**
+- **Magnetic tape** is a data storage type in the form of a flexible tape covered with a thin magnetic layer. Information is recorded by magnetic recording. Magnetic tapes appeared in 1951 by IBM. They had some disadvantages at that time but they are fixed nowadays. Magnetic tapes is widely used today as a big storage of information because it is really cheap. Magnetic tapes even have its own filesystem [LTFS](https://en.wikipedia.org/wiki/Linear_Tape_File_System). Magnetic tapes are being developed nowadays because it is widely used in backups, machine learning, Big Data, researches and so on.
+
+![Magnetic tape image](/assets/magnetic-tape.jpg)
+
+- **Punched tape** or **perforated paper tape*** is a form of data storage that consists of a long strip of paper through which small holes are punched. It was developed from and was subsequently used alongside punched cards, the difference being that the tape is continuous. Punched tapes were used in 18th century for control looms. People started to use them in telegraphy systems in 1842. Punched tapes were used in the 19th and 20th century for programmable looms and teleprinter communication. In 1950s and 1960s they were used as a data storage type for [minicomputers](https://en.wikipedia.org/wiki/Minicomputer) and [CNC machine tools](https://en.wikipedia.org/wiki/Numerical_control).
+
+- **Punched cards** is a stiff paper-based medium used to store digital information via the presence or absence of holes in predefined positions. Developed over the 18th to 20th centuries, punched cards were widely used for data processing, the control of automated machines, and computing. Early applications included controlling weaving looms and recording census data. 
+
+Punched cards were widely used in 20th century for input, output as data storage type for [unit record machines](https://en.wikipedia.org/wiki/Unit_record_equipment) organized in [data processing systems](https://en.wikipedia.org/wiki/Data_processing_system). The IBM 12-row/80-column punched card format came to dominate the industry. Some command-line interfaces still have a size 80 characters. Many early digital computers used punched cards as a type of input. Punched cards were widely used before being replaced by magnetic tapes. Some voting machines still use punched cards to record votes.
+
+![Punched card image](/assets/punched-card-image.jpg)
+
+- **RAM disk (also called virtual RAM drive)** is a block of random-access memory (primary storage or volatile memory) that a computer's software treats as if the memory were a hard disk drive or solid-state drive (secondary storage). RAM drives provide high-performance temporary storage for demanding tasks and protect non-volatile storage devices from wearing down, since RAM is not prone to wear from writing, unlike non-volatile flash memory as used in solid-state drives.
+
+#### Tertiary storage
+**Tertiary storage** is a storage type that typically involves a robotic access (a robotic arm, for example which mounts and dismounts other data storages). The speed is much slower than secondary storage has, but it allow to store large amounts of data without human access. Typical examples include [tape libraries](https://en.wikipedia.org/wiki/Tape_libraries), [optical jukeboxes](https://en.wikipedia.org/wiki/Optical_jukebox), and massive arrays of idle disks ([MAID](https://en.wikipedia.org/wiki/Non-RAID_drive_architectures#MAID)). Tertiary storage is also known as nearline storage because it is "near to online".
+
+![Robotic arm data storage](/assets/robotic-arm-data-storage-image.jpg)
+
+**Offline storage** is a data storage that typically is not under the control of CPU. The medium is recorded, usually in a secondary or tertiary storage device, and then physically removed or disconnected. Unlike tertiary storage, it cannot be accessed without human interaction. It is used to transfer information since the detached medium can easily be physically transported. In modern personal computers, most secondary and tertiary storage media are also used for offline storage. 
+
+#### Network connectivity
+
+A secondary or tertiary storage may connect to a computer utilizing computer networks. This concept does not pertain to the primary storage.
+
+- **Direct-attached storage (DAS)** is a traditional mass storage, that does not use any network.
+- **Network-attached storage (NAS)** is mass storage attached to a computer which another computer can access at file level over a local area network, a private wide area network, or in the case of online file storage, over the Internet. NAS is commonly associated with the [NFS](https://en.wikipedia.org/wiki/Network_File_System) and [CIFS/SMB](https://en.wikipedia.org/wiki/CIFS/SMB) protocols.
+- [**Storage area network (SAN)**](https://en.wikipedia.org/wiki/Storage_area_network) is a specialized network, that provides other computers with storage capacity. SAN is commonly associated with Fibre Channel networks.
 
 ![Computer memory hierarchy](/assets/computer_memory_hierarchy.png)
